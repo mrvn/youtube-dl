@@ -22,7 +22,7 @@ class XVideosIE(InfoExtractor):
                             flashservice\.xvideos\.com/embedframe/|
                             static-hw\.xvideos\.com/swf/xv-player\.swf\?.*?\bid_video=
                         )
-                        (?P<id>[0-9]+)
+                        (?P<id>[0-9]+/.*)
                     '''
     _TESTS = [{
         'url': 'http://www.xvideos.com/video4588838/biker_takes_his_girl',
@@ -82,7 +82,7 @@ class XVideosIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://www.xvideos.com/video%s/' % video_id, video_id)
+            'https://www.xvideos.com/video%s' % video_id, video_id)
 
         mobj = re.search(r'<h1 class="inlineError">(.+?)</h1>', webpage)
         if mobj:
